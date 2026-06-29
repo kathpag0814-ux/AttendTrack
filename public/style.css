@@ -1,0 +1,2434 @@
+*{
+
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:"Segoe UI",sans-serif;
+
+}
+
+
+body{
+
+background:#ffffff;
+color:#1f2937;
+
+}
+
+
+
+.app{
+
+display:flex;
+min-height:100vh;
+
+}
+
+
+
+/* SIDEBAR */
+
+.sidebar{
+
+width:280px;
+background:#15803d;
+padding:25px;
+border-right:3px solid #facc15;
+
+}
+
+
+
+.brand{
+
+display:flex;
+gap:15px;
+align-items:center;
+
+}
+
+
+.fingerprint i{
+
+font-size:45px;
+color:#facc15;
+
+}
+
+
+
+.brand h2{
+
+color:#facc15;
+
+}
+
+
+
+.brand p{
+
+color:#dcfce7;
+
+}
+
+
+
+
+
+nav{
+
+margin-top:40px;
+
+}
+
+
+nav a{
+
+display:block;
+padding:15px;
+margin:8px 0;
+color:white;
+border-radius:12px;
+text-decoration:none;
+transition:.3s;
+
+}
+
+
+
+nav a:hover,
+.active{
+
+background:#facc15;
+color:#15803d;
+font-weight:bold;
+
+}
+
+
+
+
+
+
+
+/* PROFILE */
+
+.profile{
+
+margin-top:50px;
+display:flex;
+gap:15px;
+align-items:center;
+
+}
+
+
+.avatar{
+
+background:#166534;
+padding:15px;
+border-radius:50%;
+color:#facc15;
+
+}
+
+
+.profile span{
+
+color:#fef08a;
+font-size:13px;
+
+}
+
+
+
+
+
+/* AI CARD */
+
+.ai-card{
+
+margin-top:30px;
+padding:20px;
+
+border:2px solid #facc15;
+
+border-radius:20px;
+
+background:#166534;
+
+color:white;
+
+}
+
+
+
+
+
+
+
+
+/* MAIN */
+
+
+main{
+
+flex:1;
+padding:30px;
+
+}
+
+
+
+header{
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+}
+
+
+
+header h1{
+
+color:#15803d;
+
+}
+
+
+
+header p{
+
+color:#64748b;
+
+}
+
+
+
+
+input{
+
+background:white;
+border:2px solid #bbf7d0;
+
+padding:15px;
+
+border-radius:15px;
+
+width:300px;
+
+}
+
+
+
+
+
+
+
+.top-icons i{
+
+margin-left:25px;
+color:#15803d;
+
+}
+
+
+
+
+
+
+
+/* STATISTICS */
+
+
+.stats{
+
+display:grid;
+
+grid-template-columns:repeat(4,1fr);
+
+gap:20px;
+
+margin-top:30px;
+
+}
+
+
+
+.stat{
+
+padding:25px;
+
+background:white;
+
+border-radius:20px;
+
+border:2px solid #dcfce7;
+
+display:flex;
+
+gap:20px;
+
+box-shadow:0 5px 15px rgba(0,0,0,.08);
+
+}
+
+
+
+.stat i{
+
+font-size:35px;
+
+color:#15803d;
+
+}
+
+
+
+
+.green i{
+
+color:#22c55e;
+
+}
+
+
+
+.yellow i{
+
+color:#facc15;
+
+}
+
+
+
+.red i{
+
+color:#ef4444;
+
+}
+
+
+
+
+
+
+
+
+/* PANELS */
+
+
+.grid{
+
+display:grid;
+
+grid-template-columns:2fr 1fr;
+
+gap:25px;
+
+margin-top:25px;
+
+}
+
+
+
+.panel{
+
+background:white;
+
+border:2px solid #dcfce7;
+
+padding:25px;
+
+border-radius:25px;
+
+box-shadow:0 5px 15px rgba(0,0,0,.08);
+
+}
+
+
+
+
+.panel h2{
+
+color:#15803d;
+
+}
+
+
+
+
+
+
+
+/* GRAPH */
+
+.graph{
+
+height:200px;
+
+margin-top:20px;
+
+border-radius:15px;
+
+background:
+
+linear-gradient(
+180deg,
+#fef08a,
+#ffffff
+);
+
+}
+
+
+
+
+
+
+
+/* ATTENDANCE CIRCLE */
+
+
+.circle{
+
+margin:20px auto;
+
+width:120px;
+
+height:120px;
+
+border-radius:50%;
+
+border:10px solid #22c55e;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+font-size:25px;
+
+color:#15803d;
+
+}
+
+
+
+
+
+.circle span{
+
+font-size:10px;
+
+}
+
+
+
+
+
+
+
+
+/* RFID SCANNER */
+
+
+.rfid-ring{
+
+margin:30px auto;
+
+width:180px;
+
+height:180px;
+
+border-radius:50%;
+
+border:8px solid #facc15;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+font-size:70px;
+
+color:#15803d;
+
+animation:pulse 2s infinite;
+
+}
+
+
+
+@keyframes pulse{
+
+50%{
+
+box-shadow:
+0 0 50px #facc15;
+
+}
+
+}
+
+
+
+
+
+
+.status{
+
+color:#22c55e;
+
+float:right;
+
+font-weight:bold;
+
+}
+
+
+
+
+
+
+
+button{
+
+padding:15px 30px;
+
+border:none;
+
+border-radius:30px;
+
+background:#15803d;
+
+color:white;
+
+font-size:16px;
+
+cursor:pointer;
+
+}
+
+
+
+button:hover{
+
+background:#facc15;
+
+color:#15803d;
+
+}
+
+
+
+
+
+
+
+
+/* TABLE */
+
+
+.bottom{
+
+display:grid;
+
+grid-template-columns:2fr 1fr;
+
+gap:25px;
+
+margin-top:25px;
+
+}
+
+
+
+
+
+table{
+
+width:100%;
+
+margin-top:20px;
+
+border-collapse:collapse;
+
+}
+
+
+
+td,th{
+
+padding:15px;
+
+border-bottom:1px solid #e5e7eb;
+
+}
+
+
+
+th{
+
+background:#fef9c3;
+
+color:#15803d;
+
+}
+
+
+
+
+.present{
+
+color:#16a34a;
+
+font-weight:bold;
+
+}
+
+
+
+.late{
+
+color:#ca8a04;
+
+font-weight:bold;
+
+}
+
+
+
+
+
+
+/* INSIGHTS */
+
+
+.insights div{
+
+background:#f0fdf4;
+
+padding:20px;
+
+margin:15px 0;
+
+border-radius:15px;
+
+border-left:6px solid #facc15;
+
+}
+
+
+
+
+
+
+
+
+@media(max-width:1000px){
+
+.sidebar{
+
+display:none;
+
+}
+
+
+
+.stats{
+
+grid-template-columns:1fr 1fr;
+
+}
+
+
+
+.grid,
+.bottom{
+
+grid-template-columns:1fr;
+
+}
+
+}
+.sidebar{
+  z-index: 1000;
+}
+
+.main{
+  position: relative;
+  z-index: 1;
+}
+ /* ============================= */
+/* FIX CLICK ISSUE (NO DESIGN CHANGE) */
+/* ============================= */
+
+/* Keep sidebar always clickable */
+.sidebar{
+  position: relative;
+  z-index: 9999;
+}
+
+/* Prevent invisible layers blocking clicks */
+body::before,
+body::after{
+  pointer-events: none !important;
+}
+
+/* Make sure main content never blocks sidebar */
+main{
+  position: relative;
+  z-index: 1;
+}
+
+/* Ensure nav links always clickable */
+.sidebar nav a{
+  pointer-events: auto;
+}
+/* ===== SIMPLE PAGE LAYOUT FIX (NO DESIGN CHANGE) ===== */
+
+.app {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Ensure sidebar stays clickable above content */
+.sidebar {
+  position: relative;
+  z-index: 10;
+}
+
+/* Main content spacing for all pages */
+main {
+  flex: 1;
+  padding: 30px;
+}
+
+/* Fix nav links (IMPORTANT for click issues) */
+.sidebar nav a,
+.nav {
+  display: block;
+  padding: 15px;
+  margin: 8px 0;
+  color: white;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+/* Hover + active behavior */
+.sidebar nav a:hover,
+.nav:hover {
+  background: #facc15;
+  color: #15803d;
+  font-weight: bold;
+}
+
+/* Prevent overlay blocking clicks (if any exists) */
+body {
+  overflow-x: hidden;
+}
+
+.panel.chart{
+    padding:25px;
+    height:380px;
+}
+
+#attendanceChart{
+    width:100% !important;
+    height:260px !important;
+}
+/* ========================= */
+/* AI ANALYTICS PAGE */
+/* ========================= */
+
+.chart-panel{
+    min-height:350px;
+}
+
+.chart-panel canvas{
+    width:100% !important;
+    height:250px !important;
+}
+
+.score-panel{
+    text-align:center;
+}
+
+.score-panel p{
+    margin-top:15px;
+    color:#64748b;
+}
+
+.circle{
+    margin:20px auto;
+    width:160px;
+    height:160px;
+    border-radius:50%;
+    border:12px solid #22c55e;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:40px;
+    font-weight:bold;
+    color:#15803d;
+    background:#f0fdf4;
+}
+
+/* AI Risk Table */
+
+.risk-high{
+    color:#ef4444;
+    font-weight:bold;
+}
+
+.risk-medium{
+    color:#f59e0b;
+    font-weight:bold;
+}
+
+.risk-low{
+    color:#22c55e;
+    font-weight:bold;
+}
+
+/* Recommendation Cards */
+
+.insights div{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    background:#f0fdf4;
+    padding:18px;
+    margin-bottom:15px;
+    border-radius:15px;
+    border-left:5px solid #facc15;
+}
+
+.insights i{
+    color:#15803d;
+    font-size:20px;
+}
+
+*{
+
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:"Segoe UI",sans-serif;
+
+}
+
+
+
+body{
+
+background:#ffffff;
+color:#1f2937;
+
+}
+
+
+
+.app{
+
+display:flex;
+min-height:100vh;
+
+}
+
+
+
+/* SIDEBAR */
+
+
+.sidebar{
+
+width:280px;
+
+background:#15803d;
+
+padding:25px;
+
+border-right:3px solid #facc15;
+
+}
+
+
+
+.brand{
+
+display:flex;
+gap:15px;
+align-items:center;
+
+}
+
+
+
+.fingerprint i{
+
+font-size:45px;
+color:#facc15;
+
+}
+
+
+
+.brand h2{
+
+color:#facc15;
+
+}
+
+
+
+.brand p{
+
+color:#dcfce7;
+
+}
+
+
+
+
+nav{
+
+margin-top:40px;
+
+}
+
+
+
+nav a{
+
+display:block;
+
+padding:15px;
+
+margin:8px 0;
+
+color:white;
+
+border-radius:12px;
+
+text-decoration:none;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+
+
+nav a:hover,
+.active{
+
+background:#facc15;
+
+color:#15803d;
+
+font-weight:bold;
+
+}
+
+
+
+
+
+/* PROFILE */
+
+
+.profile{
+
+margin-top:40px;
+
+display:flex;
+
+gap:15px;
+
+align-items:center;
+
+color:white;
+
+}
+
+
+
+.avatar{
+
+background:#166534;
+
+padding:15px;
+
+border-radius:50%;
+
+color:#facc15;
+
+}
+
+
+
+.profile span{
+
+color:#fef08a;
+
+font-size:13px;
+
+}
+
+
+
+
+
+/* AI CARD */
+
+
+.ai-card{
+
+margin-top:30px;
+
+padding:20px;
+
+border:2px solid #facc15;
+
+border-radius:20px;
+
+background:
+
+linear-gradient(
+135deg,
+#166534,
+#15803d
+);
+
+color:white;
+
+box-shadow:
+
+0 10px 25px rgba(21,128,61,.4);
+
+}
+
+
+
+.ai-card i{
+
+font-size:35px;
+
+color:#facc15;
+
+}
+
+
+
+
+
+/* MAIN */
+
+
+main{
+
+flex:1;
+
+padding:30px;
+
+}
+
+
+
+
+header{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+}
+
+
+
+header input{
+
+width:350px;
+
+background:#f0fdf4;
+
+border:none;
+
+padding:15px 20px;
+
+border-radius:30px;
+
+outline:none;
+
+}
+
+
+
+header input:focus{
+
+box-shadow:
+
+0 0 0 3px #fef08a;
+
+}
+
+
+
+.top-icons i{
+
+margin-left:25px;
+
+color:#15803d;
+
+font-size:20px;
+
+}
+
+
+
+
+
+/* WELCOME */
+
+
+.welcome h1{
+
+margin-top:30px;
+
+color:#15803d;
+
+}
+
+
+
+.welcome p{
+
+color:#64748b;
+
+}
+
+
+
+
+
+/* STAT CARDS */
+
+
+.stats{
+
+display:grid;
+
+grid-template-columns:repeat(4,1fr);
+
+gap:20px;
+
+margin-top:30px;
+
+}
+
+
+
+.stat{
+
+padding:25px;
+
+background:white;
+
+border-radius:20px;
+
+border:2px solid #dcfce7;
+
+display:flex;
+
+gap:20px;
+
+align-items:center;
+
+box-shadow:
+
+0 5px 15px rgba(0,0,0,.08);
+
+transition:.3s;
+
+}
+
+
+
+.stat:hover{
+
+transform:translateY(-8px);
+
+border-color:#facc15;
+
+}
+
+
+
+.stat i{
+
+font-size:35px;
+
+color:#15803d;
+
+}
+
+
+
+.green i{
+
+color:#22c55e;
+
+}
+
+
+
+.yellow i{
+
+color:#facc15;
+
+}
+
+
+
+.red i{
+
+color:#ef4444;
+
+}
+
+
+
+
+
+/* PANELS */
+
+
+.grid{
+
+display:grid;
+
+grid-template-columns:2fr 1fr;
+
+gap:25px;
+
+margin-top:25px;
+
+}
+
+
+
+.panel{
+
+background:white;
+
+border:2px solid #dcfce7;
+
+padding:25px;
+
+border-radius:25px;
+
+box-shadow:
+
+0 5px 15px rgba(0,0,0,.08);
+
+animation:fade .5s;
+
+}
+
+
+
+@keyframes fade{
+
+
+from{
+
+opacity:0;
+
+transform:translateY(20px);
+
+}
+
+
+to{
+
+opacity:1;
+
+}
+
+
+}
+
+
+
+
+.panel h2{
+
+color:#15803d;
+
+}
+
+
+
+
+
+/* GRAPH */
+
+
+.graph{
+
+height:200px;
+
+border-radius:15px;
+
+margin-top:20px;
+
+background:
+
+linear-gradient(
+180deg,
+#fef08a,
+#ffffff
+);
+
+}
+
+
+
+
+
+/* CIRCLE */
+
+
+.circle{
+
+margin:25px auto;
+
+width:130px;
+
+height:130px;
+
+border-radius:50%;
+
+border:
+
+10px solid #22c55e;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+font-size:30px;
+
+color:#15803d;
+
+}
+
+
+
+
+
+/* RFID */
+
+
+.rfid-ring{
+
+margin:30px auto;
+
+width:180px;
+
+height:180px;
+
+border-radius:50%;
+
+border:
+
+8px solid #facc15;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+font-size:70px;
+
+color:#15803d;
+
+position:relative;
+
+}
+
+
+
+.rfid-ring::before,
+.rfid-ring::after{
+
+content:"";
+
+position:absolute;
+
+width:100%;
+
+height:100%;
+
+border-radius:50%;
+
+border:
+
+3px solid #facc15;
+
+animation:pulse 2s infinite;
+
+}
+
+
+
+.rfid-ring::after{
+
+animation-delay:1s;
+
+}
+
+
+
+@keyframes pulse{
+
+
+0%{
+
+transform:scale(1);
+
+opacity:1;
+
+}
+
+
+100%{
+
+transform:scale(1.5);
+
+opacity:0;
+
+}
+
+
+}
+
+
+
+
+.status{
+
+float:right;
+
+color:#22c55e;
+
+font-weight:bold;
+
+}
+
+
+
+
+.input-box{
+
+display:flex;
+
+flex-direction:column;
+
+gap:12px;
+
+margin-top:20px;
+
+}
+
+
+
+.input-box input{
+
+width:100%;
+
+padding:12px;
+
+border-radius:12px;
+
+border:
+
+2px solid #dcfce7;
+
+outline:none;
+
+}
+
+
+
+.input-box input:focus{
+
+border-color:#facc15;
+
+}
+
+
+
+
+
+button{
+
+padding:15px 30px;
+
+border:none;
+
+border-radius:30px;
+
+background:#15803d;
+
+color:white;
+
+font-size:16px;
+
+cursor:pointer;
+
+margin-top:20px;
+
+}
+
+
+
+button:hover{
+
+background:#facc15;
+
+color:#15803d;
+
+}
+
+
+
+
+
+/* TABLE */
+
+
+.bottom{
+
+display:grid;
+
+grid-template-columns:2fr 1fr;
+
+gap:25px;
+
+margin-top:25px;
+
+}
+
+
+
+
+table{
+
+width:100%;
+
+margin-top:20px;
+
+border-collapse:collapse;
+
+}
+
+
+
+td,th{
+
+padding:15px;
+
+border-bottom:
+
+1px solid #e5e7eb;
+
+}
+
+
+
+th{
+
+background:#fef9c3;
+
+color:#15803d;
+
+}
+
+
+
+.present{
+
+background:#dcfce7;
+
+color:#15803d;
+
+font-weight:bold;
+
+padding:5px 12px;
+
+border-radius:20px;
+
+}
+
+
+
+.late{
+
+background:#fef9c3;
+
+color:#ca8a04;
+
+font-weight:bold;
+
+padding:5px 12px;
+
+border-radius:20px;
+
+}
+
+
+
+
+
+.insights div{
+
+background:#f0fdf4;
+
+padding:20px;
+
+margin:15px 0;
+
+border-left:
+
+6px solid #facc15;
+
+border-radius:15px;
+
+}
+
+
+
+
+
+@media(max-width:1000px){
+
+
+.sidebar{
+
+display:none;
+
+}
+
+
+.stats{
+
+grid-template-columns:1fr 1fr;
+
+}
+
+
+
+.grid,
+.bottom{
+
+grid-template-columns:1fr;
+
+}
+
+
+}
+
+/* REPORT PAGE */
+
+
+.report-filter{
+
+margin-top:25px;
+
+}
+
+
+
+.input-box select{
+
+padding:12px;
+
+border-radius:12px;
+
+border:2px solid #dcfce7;
+
+outline:none;
+
+background:white;
+
+}
+
+
+
+
+
+.input-box button{
+
+width:max-content;
+
+}
+
+
+
+
+
+.report-filter button i{
+
+margin-right:8px;
+
+}
+
+
+
+
+
+.panel table button{
+
+
+padding:8px 18px;
+
+border-radius:20px;
+
+font-size:14px;
+
+margin:0;
+
+}
+
+
+
+.panel table button:hover{
+
+background:#facc15;
+
+}
+
+
+
+
+
+.report-filter .input-box{
+
+display:flex;
+
+flex-direction:row;
+
+align-items:center;
+
+}
+
+
+
+.report-filter input,
+.report-filter select{
+
+width:220px;
+
+}
+
+
+
+
+
+@media(max-width:800px){
+
+
+.report-filter .input-box{
+
+flex-direction:column;
+
+align-items:stretch;
+
+}
+
+
+.report-filter input,
+.report-filter select{
+
+width:100%;
+
+}
+
+
+}
+
+select{
+
+padding:12px;
+
+border-radius:12px;
+
+border:2px solid #dcfce7;
+
+outline:none;
+
+background:white;
+
+cursor:pointer;
+
+}
+
+select:focus{
+
+border-color:#facc15;
+
+}
+
+label{
+
+font-size:13px;
+
+color:#15803d;
+
+margin-top:10px;
+
+}
+
+select{
+
+padding:12px;
+
+border-radius:12px;
+
+border:2px solid #dcfce7;
+
+outline:none;
+
+background:white;
+
+cursor:pointer;
+
+}
+
+select:focus{
+
+border-color:#facc15;
+
+}
+
+/* SYSTEM LOGS */
+
+
+.log-success{
+
+background:#dcfce7;
+
+color:#15803d;
+
+font-weight:bold;
+
+padding:6px 15px;
+
+border-radius:20px;
+
+}
+
+
+
+.log-warning{
+
+background:#fef9c3;
+
+color:#ca8a04;
+
+font-weight:bold;
+
+padding:6px 15px;
+
+border-radius:20px;
+
+}
+
+
+
+.log-danger{
+
+background:#fee2e2;
+
+color:#dc2626;
+
+font-weight:bold;
+
+padding:6px 15px;
+
+border-radius:20px;
+
+}
+
+
+
+.input-box select,
+.input-box input{
+
+
+padding:12px;
+
+border-radius:12px;
+
+border:2px solid #dcfce7;
+
+outline:none;
+
+background:white;
+
+}
+
+
+
+.input-box select:focus,
+.input-box input:focus{
+
+border-color:#facc15;
+
+}
+
+/* ================= STUDENTS MODULE ================= */
+
+
+/* STUDENT REGISTER PANEL */
+
+.panel h2 i{
+
+color:#15803d;
+
+margin-right:10px;
+
+}
+
+
+
+.input-box select{
+
+width:100%;
+
+padding:12px;
+
+border-radius:12px;
+
+border:2px solid #dcfce7;
+
+outline:none;
+
+background:white;
+
+color:#334155;
+
+}
+
+
+
+.input-box select:focus{
+
+border-color:#facc15;
+
+}
+
+
+
+
+
+
+/* STUDENT TABLE */
+
+
+table{
+
+width:100%;
+
+border-collapse:collapse;
+
+margin-top:20px;
+
+}
+
+
+
+table th{
+
+background:#fef9c3;
+
+color:#15803d;
+
+padding:15px;
+
+text-align:left;
+
+}
+
+
+
+table td{
+
+padding:15px;
+
+border-bottom:1px solid #e5e7eb;
+
+}
+
+
+
+
+table tr:hover{
+
+background:#f0fdf4;
+
+}
+
+
+
+
+
+
+/* ACTIVE STUDENT STATUS */
+
+
+.active-status{
+
+background:#dcfce7;
+
+color:#15803d;
+
+padding:6px 15px;
+
+border-radius:20px;
+
+font-weight:bold;
+
+}
+
+
+
+
+.inactive-status{
+
+background:#fee2e2;
+
+color:#dc2626;
+
+padding:6px 15px;
+
+border-radius:20px;
+
+font-weight:bold;
+
+}
+
+
+
+
+
+
+
+/* ACTION BUTTONS */
+
+
+table button{
+
+padding:8px 18px;
+
+border-radius:20px;
+
+font-size:14px;
+
+margin:3px;
+
+}
+
+
+
+
+.edit-btn{
+
+background:#15803d;
+
+color:white;
+
+}
+
+
+
+.delete-btn{
+
+background:#ef4444;
+
+color:white;
+
+}
+
+
+
+.delete-btn:hover{
+
+background:#dc2626;
+
+}
+
+
+
+
+
+/* STUDENT RFID BADGE */
+
+
+.rfid-tag{
+
+background:#fef9c3;
+
+color:#15803d;
+
+padding:6px 12px;
+
+border-radius:15px;
+
+font-weight:bold;
+
+}
+
+
+
+
+
+
+
+/* ADD STUDENT FORM */
+
+
+.input-box input,
+.input-box select{
+
+
+transition:.3s;
+
+}
+
+
+
+.input-box input:focus,
+.input-box select:focus{
+
+
+box-shadow:
+
+0 0 0 3px #fef08a;
+
+
+}
+
+
+
+
+
+
+/* STUDENT SEARCH */
+
+
+.search-box{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+margin-bottom:20px;
+
+}
+
+
+
+.search-box input{
+
+width:300px;
+
+padding:12px 20px;
+
+border-radius:30px;
+
+border:none;
+
+background:#f0fdf4;
+
+outline:none;
+
+}
+
+
+
+
+
+
+/* EMPTY TABLE MESSAGE */
+
+
+.empty{
+
+text-align:center;
+
+padding:30px;
+
+color:#64748b;
+
+font-size:18px;
+
+}
+
+
+
+
+
+
+
+/* RESPONSIVE */
+
+
+@media(max-width:1000px){
+
+
+.stats{
+
+grid-template-columns:1fr 1fr;
+
+}
+
+
+
+table{
+
+font-size:14px;
+
+}
+
+
+
+.input-box{
+
+width:100%;
+
+}
+
+
+}
+
+
+
+@media(max-width:700px){
+
+
+.stats{
+
+grid-template-columns:1fr;
+
+}
+
+
+table{
+
+display:block;
+
+overflow-x:auto;
+
+}
+
+
+}
+
+/* =========================
+   NOTIFICATIONS PAGE
+========================= */
+
+.notification {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    background: #ffffff;
+    padding: 18px;
+    margin-bottom: 15px;
+    border-radius: 12px;
+    border-left: 5px solid #3b82f6;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    transition: 0.3s;
+}
+
+.notification:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+.notification h3 {
+    margin: 0;
+    font-size: 16px;
+    color: #0f172a;
+}
+
+.notification p {
+    margin: 5px 0;
+    color: #64748b;
+    font-size: 14px;
+}
+
+.notification span {
+    font-size: 12px;
+    color: #94a3b8;
+}
+
+/* Notification Types */
+
+.notification.unread {
+    background: #eff6ff;
+    border-left-color: #2563eb;
+}
+
+.notification.success {
+    border-left-color: #22c55e;
+}
+
+.notification.warning {
+    border-left-color: #f59e0b;
+}
+
+.notification.danger {
+    border-left-color: #ef4444;
+}
+
+.notification.ai {
+    border-left-color: #8b5cf6;
+}
+
+/* Notification Icons */
+
+.notify-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+.notify-icon.success {
+    background: #22c55e;
+}
+
+.notify-icon.warning {
+    background: #f59e0b;
+}
+
+.notify-icon.danger {
+    background: #ef4444;
+}
+
+.notify-icon.ai {
+    background: #8b5cf6;
+}
+
+.notify-icon.system {
+    background: #3b82f6;
+}
+
+/* Notification Container */
+
+#notificationList {
+    margin-top: 20px;
+}
+
+/* Notification Settings Card */
+
+.insights div {
+    background: #f8fafc;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #334155;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.insights div i {
+    color: #3b82f6;
+}
+
+/* =========================
+   ADMIN PROFILE
+========================= */
+
+.profile{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    margin-top:20px;
+}
+
+.avatar{
+    width:70px;
+    height:70px;
+    border-radius:50%;
+    background:#0b5d2a;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-shrink:0;
+}
+
+.avatar i{
+    font-size:30px;
+    color:#ffd43b;
+}
+
+.profile-info{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.profile-info b{
+    color:#fff;
+    font-size:28px;
+    display:block;
+}
+
+.profile-info p{
+    color:#fff;
+    font-size:18px;
+    margin-top:5px;
+}
+.role-line{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin-top:5px;
+}
+
+.role-line i{
+    color:#ffd43b;
+    font-size:18px;
+}
+
+.role-line p{
+    margin:0;
+    color:#fff;
+    font-size:16px;
+    font-weight:500;
+}

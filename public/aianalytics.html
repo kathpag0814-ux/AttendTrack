@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>AttendTrack AI Analytics</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+
+<body>
+
+
+<div class="app">
+
+
+<!-- SIDEBAR -->
+
+<aside class="sidebar">
+
+
+<div class="brand">
+
+<div class="fingerprint">
+<i class="fa-solid fa-fingerprint"></i>
+</div>
+
+
+<div>
+
+<h2>AttendTrack</h2>
+<p>AI Analytics</p>
+
+</div>
+
+
+</div>
+
+
+
+<nav>
+
+
+  <a href="index.html">
+<i class="fa-solid fa-border-all"></i>
+Dashboard
+</a>
+
+<a href="students.html">
+<i class="fa-solid fa-user-graduate"></i>
+Students
+</a>
+
+<a href="rfid.html">
+<i class="fa-solid fa-credit-card"></i>
+RFID Cards
+</a>
+
+<a href="attendance.html">
+<i class="fa-solid fa-calendar-check"></i>
+Attendance
+</a>
+
+<a href="aianalytics.html"class="active">
+<i class="fa-solid fa-chart-line"></i>
+AI Analytics
+</a>
+
+<a href="reports.html">
+<i class="fa-solid fa-file"></i>
+Reports
+</a>
+
+<a href="notifications.html">
+<i class="fa-solid fa-bell"></i>
+Notifications
+</a>
+
+<a href="settings.html">
+<i class="fa-solid fa-gear"></i>
+Settings
+</a>
+
+<a href="systemlogs.html">
+<i class="fa-solid fa-list"></i>
+System Logs
+</a>
+</nav>
+
+
+<br>
+<br>
+<div class="profile">
+
+    <div class="avatar">
+        <i class="fa-solid fa-user"></i>
+    
+    </div>
+
+    <div class="profile-info">
+
+    <h3>Administrator</h3>
+
+    <div class="role-line">
+        <i class="fa-solid fa-fingerprint"></i>
+            <p>SystemaTech</p>
+    </div>
+
+    <div class="footer-logo">
+        <span>© 2026 AttendTrack</span>
+    </div>
+
+    </div>
+
+
+</aside>
+
+
+
+
+
+
+<!-- MAIN -->
+
+
+<main>
+
+
+<header>
+
+
+<input placeholder="Search analytics...">
+
+
+<div class="top-icons">
+
+<i class="fa-solid fa-bell"></i>
+
+<i class="fa-solid fa-gear"></i>
+
+</div>
+
+
+</header>
+
+
+
+
+
+<section class="welcome">
+
+
+<h1>
+AI Attendance Analytics
+</h1>
+
+
+<p>
+Smart insights powered by RFID attendance data
+</p>
+
+
+</section>
+
+
+
+
+
+
+
+
+<!-- STAT CARDS -->
+
+
+<div class="stats">
+
+
+<div class="stat">
+
+<i class="fa-solid fa-user-group"></i>
+
+<div>
+
+<h3>Total Students</h3>
+
+<h1 id="total">0</h1>
+
+</div>
+
+</div>
+
+
+
+
+
+<div class="stat green">
+
+<i class="fa-solid fa-user-check"></i>
+
+<div>
+
+<h3>Present Today</h3>
+
+<h1 id="present">0</h1>
+
+</div>
+
+</div>
+
+
+
+
+
+
+<div class="stat yellow">
+
+<i class="fa-solid fa-clock"></i>
+
+<div>
+
+<h3>Late Today</h3>
+
+<h1 id="late">0</h1>
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+<div class="stat red">
+
+<i class="fa-solid fa-user-xmark"></i>
+
+<div>
+
+<h3>Absent</h3>
+
+<h1 id="absent">0</h1>
+
+</div>
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+<div class="grid">
+
+
+
+<!-- GRAPH -->
+
+
+<div class="panel chart">
+
+
+<h2>
+Attendance Trend
+</h2>
+
+
+<canvas id="attendanceChart"></canvas>
+
+
+</div>
+
+
+
+
+
+
+
+<!-- AI SCORE -->
+
+
+<div class="panel chart">
+
+
+<h2>
+AI Attendance Score
+</h2>
+
+
+<div class="circle" id="score">0%</div>
+<canvas id="attendanceChart"></canvas>
+
+<p>
+Overall attendance performance is excellent.
+</p>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="bottom">
+
+
+
+<!-- AI PREDICTION -->
+
+
+<div class="panel">
+
+
+<h2>
+AI Risk Prediction
+</h2>
+
+
+
+<table id="riskTable">
+
+
+<tr>
+
+<th>Student</th>
+
+<th>Risk</th>
+
+<th>Reason</th>
+
+</tr>
+
+
+
+<tr>
+
+<td>Maria Santos</td>
+
+<td>
+<span class="late">
+HIGH
+</span>
+</td>
+
+<td>
+8 late records
+</td>
+
+
+</tr>
+
+
+
+
+<tr>
+
+<td>Pedro Reyes</td>
+
+<td>
+<span class="late">
+MEDIUM
+</span>
+</td>
+
+<td>
+Declining attendance
+</td>
+
+
+</tr>
+
+
+
+
+</table>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- INSIGHTS -->
+
+
+<div class="panel insights" id="recommendations">
+
+<h2>AI Recommendations</h2>
+
+Loading AI recommendations...
+
+</div>
+
+
+<div>
+
+<i class="fa-solid fa-bell"></i>
+
+Send alerts to advisers.
+
+</div>
+
+
+
+
+<div>
+
+<i class="fa-solid fa-chart-line"></i>
+
+Improve attendance monitoring.
+
+</div>
+
+
+
+</div>
+
+
+
+
+</div>
+
+
+
+
+
+
+</main>
+
+
+
+</div>
+
+<script src="aianalytics.js"></script>
+
+</body>
+
+</html> 

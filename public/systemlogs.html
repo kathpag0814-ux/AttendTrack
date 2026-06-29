@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AttendTrack System Logs</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="app">
+
+<!-- SIDEBAR -->
+
+<aside class="sidebar">
+
+<div class="brand">
+
+<div class="fingerprint">
+<i class="fa-solid fa-fingerprint"></i>
+</div>
+
+<div>
+<h2>AttendTrack</h2>
+<p>System Logs</p>
+</div>
+
+</div>
+
+<nav>
+
+<a href="index.html">
+<i class="fa-solid fa-border-all"></i>
+Dashboard
+</a>
+
+<a href="students.html">
+<i class="fa-solid fa-user-graduate"></i>
+Students
+</a>
+
+<a href="rfid.html">
+<i class="fa-solid fa-credit-card"></i>
+RFID Cards
+</a>
+
+<a href="attendance.html">
+<i class="fa-solid fa-calendar-check"></i>
+Attendance
+</a>
+
+<a href="aianalytics.html">
+<i class="fa-solid fa-chart-line"></i>
+AI Analytics
+</a>
+
+<a href="reports.html">
+<i class="fa-solid fa-file"></i>
+Reports
+</a>
+
+<a href="notifications.html">
+<i class="fa-solid fa-bell"></i>
+Notifications
+</a>
+
+<a href="settings.html">
+<i class="fa-solid fa-gear"></i>
+Settings
+</a>
+
+<a href="systemlogs.html" class="active">
+<i class="fa-solid fa-list"></i>
+System Logs
+</a>
+
+</nav>
+
+<br>
+<br>
+<div class="profile">
+
+    <div class="avatar">
+        <i class="fa-solid fa-user"></i>
+    
+    </div>
+
+    <div class="profile-info">
+
+    <h3>Administrator</h3>
+
+    <div class="role-line">
+        <i class="fa-solid fa-fingerprint"></i>
+            <p>SystemaTech</p>
+    </div>
+
+    <div class="footer-logo">
+        <span>© 2026 AttendTrack</span>
+    </div>
+
+    </div>
+</aside>
+
+<!-- MAIN -->
+
+<main>
+
+<header>
+
+<input
+id="searchLogs"
+placeholder="Search logs...">
+
+<div class="top-icons">
+<i class="fa-solid fa-bell"></i>
+<i class="fa-solid fa-gear"></i>
+</div>
+
+</header>
+
+<section class="welcome">
+
+<h1>System Activity Logs</h1>
+
+<p>
+Monitor all activities performed inside SmartAttend AI
+</p>
+
+</section>
+
+<!-- STATISTICS -->
+
+<div class="stats">
+
+<div class="stat">
+
+<i class="fa-solid fa-database"></i>
+
+<div>
+<h3>Total Logs</h3>
+<h1 id="totalLogs">0</h1>
+</div>
+
+</div>
+
+<div class="stat green">
+
+<i class="fa-solid fa-right-to-bracket"></i>
+
+<div>
+<h3>Login Activities</h3>
+<h1 id="loginLogs">0</h1>
+</div>
+
+</div>
+
+<div class="stat yellow">
+
+<i class="fa-solid fa-id-card"></i>
+
+<div>
+<h3>RFID Scans</h3>
+<h1 id="rfidLogs">0</h1>
+</div>
+
+</div>
+
+<div class="stat red">
+
+<i class="fa-solid fa-shield-halved"></i>
+
+<div>
+<h3>Security Alerts</h3>
+<h1 id="securityLogs">0</h1>
+</div>
+
+</div>
+
+</div>
+
+<!-- FILTER -->
+
+<div class="panel">
+
+<h2>Log Filters</h2>
+
+<div class="input-box">
+
+<select
+id="logFilter"
+onchange="filterLogs()">
+
+<option>
+All Activities
+</option>
+
+<option>
+RFID Scan
+</option>
+
+<option>
+Login
+</option>
+
+<option>
+Student Registration
+</option>
+
+<option>
+Settings Update
+</option>
+
+</select>
+
+<input type="date">
+
+<button>
+<i class="fa-solid fa-filter"></i>
+Filter
+</button>
+
+</div>
+
+</div>
+
+<!-- LOG TABLE -->
+
+<div class="panel">
+
+<h2>Recent System Activities</h2>
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Date & Time</th>
+<th>User</th>
+<th>Activity</th>
+<th>Description</th>
+<th>Status</th>
+
+</tr>
+
+</thead>
+
+<tbody id="logsTable">
+
+</tbody>
+
+</table>
+
+</div>
+
+<!-- AI INSIGHTS -->
+
+<div class="panel insights">
+
+<h2>AI Security Monitoring</h2>
+
+<div>
+<i class="fa-solid fa-robot"></i>
+AI detected normal system behavior.
+</div>
+
+<div>
+<i class="fa-solid fa-shield"></i>
+No unauthorized access detected.
+</div>
+
+<div>
+<i class="fa-solid fa-clock"></i>
+Peak activity time: 7:00 AM - 8:00 AM
+</div>
+
+</div>
+
+</main>
+
+</div>
+
+<script src="systemlogs.js"></script>
+
+</body>
+</html>

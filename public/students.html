@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>AttendTrack - Students</title>
+
+<link rel="stylesheet" href="style.css">
+
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+</head>
+
+
+<body>
+
+
+<div class="app">
+
+
+
+<!-- SIDEBAR -->
+
+<aside class="sidebar">
+
+
+<div class="brand">
+
+<div class="fingerprint">
+
+<i class="fa-solid fa-fingerprint"></i>
+
+</div>
+
+
+<div>
+
+<h2>AttendTrack</h2>
+
+<p>Students</p>
+
+</div>
+
+</div>
+
+
+
+
+<nav>
+
+
+ <a href="index.html">
+<i class="fa-solid fa-border-all"></i>
+Dashboard
+</a>
+
+<a href="students.html"class="active">
+<i class="fa-solid fa-user-graduate"></i>
+Students
+</a>
+
+<a href="rfid.html">
+<i class="fa-solid fa-credit-card"></i>
+RFID Cards
+</a>
+
+<a href="attendance.html">
+<i class="fa-solid fa-calendar-check"></i>
+Attendance
+</a>
+
+<a href="aianalytics.html">
+<i class="fa-solid fa-chart-line"></i>
+AI Analytics
+</a>
+
+<a href="reports.html">
+<i class="fa-solid fa-file"></i>
+Reports
+</a>
+
+<a href="notifications.html">
+<i class="fa-solid fa-bell"></i>
+Notifications
+</a>
+
+<a href="settings.html">
+<i class="fa-solid fa-gear"></i>
+Settings
+</a>
+
+<a href="systemlogs.html">
+<i class="fa-solid fa-list"></i>
+System Logs
+</a>
+</nav>
+
+
+
+<br>
+<br>
+<div class="profile">
+
+    <div class="avatar">
+        <i class="fa-solid fa-user"></i>
+    
+    </div>
+
+    <div class="profile-info">
+
+    <h3>Administrator</h3>
+
+    <div class="role-line">
+        <i class="fa-solid fa-fingerprint"></i>
+            <p>SystemaTech</p>
+    </div>
+
+    <div class="footer-logo">
+        <span>© 2026 AttendTrack</span>
+    </div>
+
+    </div>
+</aside>
+
+
+
+
+
+
+
+
+
+<!-- MAIN CONTENT -->
+
+
+<main>
+
+
+<header>
+
+
+<input 
+id="search"
+placeholder="Search student...">
+
+
+<div class="top-icons">
+
+
+<i class="fa-solid fa-bell"></i>
+
+<i class="fa-solid fa-gear"></i>
+
+
+</div>
+
+
+</header>
+
+
+
+
+
+
+
+
+<section class="welcome">
+
+
+<h1>
+Student Management
+</h1>
+
+
+<p>
+Register students and manage RFID information
+</p>
+
+
+</section>
+
+
+
+
+
+
+
+
+<!-- STATISTICS -->
+
+
+<div class="stats">
+
+
+<div class="stat">
+
+
+<i class="fa-solid fa-users"></i>
+
+
+<div>
+
+<h3>Total Students</h3>
+
+<h1 id="totalStudents">
+0
+</h1>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="stat green">
+
+
+<i class="fa-solid fa-id-card"></i>
+
+
+<div>
+
+<h3>Registered RFID</h3>
+
+<h1 id="totalRFID">
+0
+</h1>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="stat yellow">
+
+
+<i class="fa-solid fa-school"></i>
+
+
+<div>
+
+<h3>Total Sections</h3>
+
+<h1>
+18
+</h1>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="stat">
+
+
+<i class="fa-solid fa-user-check"></i>
+
+
+<div>
+
+<h3>Active Students</h3>
+
+<h1 id="activeStudents">
+0
+</h1>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- REGISTER STUDENT -->
+
+
+<div class="panel">
+
+
+<h2>
+
+<i class="fa-solid fa-user-plus"></i>
+
+Register Student
+
+</h2>
+
+
+
+<div class="input-box">
+
+
+<input 
+id="name"
+placeholder="Student Full Name">
+
+
+
+<input
+id="rfid"
+placeholder="RFID Number">
+
+<select id="grade" onchange="loadSections()">
+    <option value="">Select Grade</option>
+    <option value="Grade 7">Grade 7</option>
+    <option value="Grade 8">Grade 8</option>
+    <option value="Grade 9">Grade 9</option>
+    <option value="Grade 10">Grade 10</option>
+    <option value="Grade 11">Grade 11</option>
+    <option value="Grade 12">Grade 12</option>
+</select>
+
+<select id="section">
+    <option value="">Select Section</option>
+</select>
+
+<button onclick="addStudent()">
+
+<i class="fa-solid fa-plus"></i>
+
+Add Student
+
+</button>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- STUDENT TABLE -->
+
+
+<div class="panel">
+
+
+<h2>
+
+Student Records
+
+</h2>
+
+
+
+<table>
+
+
+<thead>
+
+
+<tr>
+
+
+<th>Name</th>
+
+<th>RFID</th>
+
+<th>Grade</th>
+
+<th>Section</th>
+
+<th>Status</th>
+
+<th>Action</th>
+
+
+</tr>
+
+
+</thead>
+
+
+
+
+
+<tbody id="studentTable">
+
+
+</tbody>
+
+
+
+</table>
+
+
+
+</div>
+
+
+
+
+
+
+</main>
+
+
+
+</div>
+
+
+
+<script src="students.js"></script>
+
+
+</body>
+
+
+</html>
+cdnjs.cloudflare.com

@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AttendTrack Settings</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="app">
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+
+<div class="brand">
+<div class="fingerprint">
+<i class="fa-solid fa-fingerprint"></i>
+</div>
+
+<div>
+<h2>AttendTrack</h2>
+<p>Settings</p>
+</div>
+</div>
+
+<nav>
+
+<a href="index.html">
+<i class="fa-solid fa-border-all"></i>
+Dashboard
+</a>
+
+<a href="students.html">
+<i class="fa-solid fa-user-graduate"></i>
+Students
+</a>
+
+<a href="rfid.html">
+<i class="fa-solid fa-credit-card"></i>
+RFID Cards
+</a>
+
+<a href="attendance.html">
+<i class="fa-solid fa-calendar-check"></i>
+Attendance
+</a>
+
+<a href="aianalytics.html">
+<i class="fa-solid fa-chart-line"></i>
+AI Analytics
+</a>
+
+<a href="reports.html">
+<i class="fa-solid fa-file"></i>
+Reports
+</a>
+
+<a href="notifications.html">
+<i class="fa-solid fa-bell"></i>
+Notifications
+</a>
+
+<a href="settings.html" class="active">
+<i class="fa-solid fa-gear"></i>
+Settings
+</a>
+
+<a href="systemlogs.html">
+<i class="fa-solid fa-list"></i>
+System Logs
+</a>
+
+</nav>
+
+<br><br>
+
+<div class="profile">
+
+<div class="avatar">
+<i class="fa-solid fa-user"></i>
+</div>
+
+<div class="profile-info">
+
+<h3>Administrator</h3>
+
+<div class="role-line">
+<i class="fa-solid fa-fingerprint"></i>
+<p>SystemaTech</p>
+</div>
+
+<div class="footer-logo">
+<span>© 2026 AttendTrack</span>
+</div>
+
+</div>
+
+</div>
+
+</aside>
+
+<!-- MAIN -->
+<main>
+
+<header>
+
+<input placeholder="Search settings...">
+
+<div class="top-icons">
+<i class="fa-solid fa-bell"></i>
+<i class="fa-solid fa-gear"></i>
+</div>
+
+</header>
+
+<section class="welcome">
+
+<h1>System Settings</h1>
+
+<p>
+Manage system configuration, AI, RFID, and attendance rules.
+</p>
+
+</section>
+
+<div class="grid">
+
+<!-- ACCOUNT -->
+
+<div class="panel">
+
+<h2><i class="fa-solid fa-user"></i> Account Settings</h2>
+
+<div class="input-box">
+
+<input id="adminName" placeholder="Admin Name">
+
+<input id="adminEmail" placeholder="Email Address">
+
+<input id="adminPassword" type="password" placeholder="Password">
+
+<button onclick="saveSettings()">
+Update Account
+</button>
+
+</div>
+
+</div>
+
+<!-- SCHOOL -->
+
+<div class="panel">
+
+<h2><i class="fa-solid fa-school"></i> School Configuration</h2>
+
+<div class="input-box">
+
+<input id="schoolName" placeholder="School Name">
+
+<input id="schoolYear" placeholder="School Year">
+
+<input id="semester" placeholder="Semester">
+
+<button onclick="saveSettings()">
+Save School Info
+</button>
+
+</div>
+
+</div>
+
+<!-- ATTENDANCE -->
+
+<div class="panel">
+
+<h2><i class="fa-solid fa-clock"></i> Attendance Rules</h2>
+
+<div class="input-box">
+
+<label>Morning Cut-off</label>
+
+<input id="amCutoff" type="time" value="07:30">
+
+<label>Afternoon Cut-off</label>
+
+<input id="pmCutoff" type="time" value="13:00">
+
+<button onclick="saveSettings()">
+Save Rules
+</button>
+
+</div>
+
+</div>
+
+<!-- RFID -->
+
+<div class="panel">
+
+<h2><i class="fa-solid fa-id-card"></i> RFID Settings</h2>
+
+<div class="input-box">
+
+<input id="deviceID" placeholder="RFID Device ID">
+
+<input id="port" placeholder="Connection Port">
+
+<button onclick="connectRFID()">
+Connect Device
+</button>
+
+<button onclick="testRFID()">
+Test Scan
+</button>
+
+</div>
+
+</div>
+
+<!-- AI -->
+
+<div class="panel">
+
+<h2><i class="fa-solid fa-brain"></i> AI Settings</h2>
+
+<div class="input-box">
+
+<label>AI Sensitivity</label>
+
+<select id="aiSensitivity">
+
+<option value="Low">Low</option>
+
+<option value="Medium" selected>Medium</option>
+
+<option value="High">High</option>
+
+</select>
+
+<label>Auto Prediction</label>
+
+<select id="autoPrediction">
+
+<option value="Enabled" selected>Enabled</option>
+
+<option value="Disabled">Disabled</option>
+
+</select>
+
+<button onclick="saveSettings()">
+Save AI Settings
+</button>
+
+</div>
+
+</div>
+
+<!-- NOTIFICATIONS -->
+
+<div class="panel">
+
+<h2><i class="fa-solid fa-bell"></i> Notifications</h2>
+
+<div class="input-box">
+
+<label>Email Alerts</label>
+
+<select id="emailAlert">
+
+<option value="Enabled">Enabled</option>
+
+<option value="Disabled">Disabled</option>
+
+</select>
+
+<label>SMS Alerts</label>
+
+<select id="smsAlert">
+
+<option value="Enabled">Enabled</option>
+
+<option value="Disabled">Disabled</option>
+
+</select>
+
+<button onclick="saveSettings()">
+Save Notifications
+</button>
+
+</div>
+
+</div>
+
+<!-- SECURITY -->
+
+<div class="panel">
+
+<h2><i class="fa-solid fa-lock"></i> Security</h2>
+
+<div class="input-box">
+
+<input id="newPassword" type="password" placeholder="New Password">
+
+<input id="confirmPassword" type="password" placeholder="Confirm Password">
+
+<button onclick="saveSettings()">
+Update Security
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</main>
+
+</div>
+
+<script src="settings.js"></script>
+
+</body>
+</html>
