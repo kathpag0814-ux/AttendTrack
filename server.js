@@ -2,7 +2,7 @@
 // AttendTrack AI + RFID Attendance System
 // server.js
 // ===========================================
-
+require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
@@ -26,9 +26,8 @@ app.use(express.static(path.join(__dirname, "public")));
 // MongoDB Connection
 // ================================
 
-mongoose.connect(
-  "mongodb+srv://Kath:attendtrack@attendtrack.dt2vekz.mongodb.net/?appName=AttendTrack"
-)
+mongoose.connect(process.env.MONGODB_URI)
+
 .then(() => {
   console.log("MongoDB Atlas Connected Successfully");
 })
