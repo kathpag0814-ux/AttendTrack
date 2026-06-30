@@ -26,24 +26,19 @@ app.use(express.static(path.join(__dirname, "public")));
 // MongoDB Connection
 // ================================
 
-mongoose.connect("mongodb://127.0.0.1:27017/AttendTrack")
+mongoose.connect(
+  "mongodb+srv://Kath:attendtrack@attendtrack.dt2vekz.mongodb.net/?appName=AttendTrack"
+)
 .then(() => {
-
-    console.log("====================================");
-    console.log("MongoDB Connected Successfully");
-    console.log("====================================");
-
+  console.log("MongoDB Atlas Connected Successfully");
 })
-.catch(err => {
-
-    console.log(err);
-
+.catch((err) => {
+  console.error(err);
 });
 
-// ================================
-// Models
-// ================================
 
+// Models
+// ===============================
 const student = require("./models/students");
 
 const attendance = require("./models/attendance");
@@ -525,7 +520,7 @@ app.delete("/systemlogs", async (req, res) => {
 // Server
 // ==========================================
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
 
