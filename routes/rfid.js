@@ -6,9 +6,10 @@ const Attendance = require("../models/attendance");
 const Notification = require("../models/notifications");
 const SystemLog = require("../models/systemlogs");
 
-// ===========================
+// =======================================
 // RFID SCAN
-// ===========================
+// POST /api/rfid/scan
+// =======================================
 
 router.post("/scan", async (req, res) => {
 
@@ -25,7 +26,7 @@ router.post("/scan", async (req, res) => {
 
         }
 
-        // Find student
+        // Find student by RFID
         const student = await Student.findOne({ rfid });
 
         if (!student) {
@@ -55,45 +56,54 @@ router.post("/scan", async (req, res) => {
 
         const today = now.toLocaleDateString();
 
-        // Prevent duplicate attendance
+        // Prevent duplicate attendance for the same day
         const existing = await Attendance.findOne({
-            studentId: student.studentId,
+
+            rfid: student.rfid,
+
             date: today
+
         });
 
         if (existing) {
 
             return res.json({
+
                 success: false,
+
                 message: "Attendance already recorded today."
+
             });
 
         }
 
-        // Determine attendance status
+        // Attendance Status
         let status = "Present";
 
         if (
+
             now.getHours() > 7 ||
+
             (now.getHours() === 7 && now.getMinutes() > 30)
+
         ) {
+
             status = "Late";
+
         }
 
-        // Save attendance
-        const attendance = await Attendance.create({
-
-            studentId: student.studentId,
+        // Save Attendance
+        const attendance = new Attendance({
 
             name: student.name,
+
+            rfid: student.rfid,
 
             grade: student.grade,
 
             section: student.section,
 
-            rfid: student.rfid,
-
-            status,
+            status: status,
 
             date: today,
 
@@ -101,7 +111,9 @@ router.post("/scan", async (req, res) => {
 
         });
 
-        // Notification
+        await attendance.save();
+
+        // Save Notification
         await Notification.create({
 
             title: "Attendance Recorded",
@@ -114,7 +126,7 @@ router.post("/scan", async (req, res) => {
 
         });
 
-        // System Log
+        // Save Log
         await SystemLog.create({
 
             activity: "RFID Scan",
@@ -127,11 +139,11 @@ router.post("/scan", async (req, res) => {
 
         });
 
-        res.json({
+        return res.json({
 
             success: true,
 
-            student,
+            message: "Attendance recorded successfully.",
 
             attendance
 
@@ -141,7 +153,9 @@ router.post("/scan", async (req, res) => {
 
     catch (err) {
 
-        res.status(500).json({
+        console.log(err);
+
+        return res.status(500).json({
 
             success: false,
 

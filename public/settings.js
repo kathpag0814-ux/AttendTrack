@@ -2,7 +2,7 @@
 // ATTENDTRACK SETTINGS
 // settings.js
 // =====================================
-
+fetch("http://localhost:3000/api/settings")
 // Load settings when page opens
 window.onload = function () {
     loadSettings();

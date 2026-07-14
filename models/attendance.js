@@ -1,46 +1,25 @@
 const mongoose = require("mongoose");
 
-const AttendanceSchema = new mongoose.Schema({
+const attendanceSchema = new mongoose.Schema({
 
     studentId: {
-        type: String,
-        required: true
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Student"
     },
 
-    name: {
-        type: String,
-        required: true
-    },
+    name: String,
 
-    grade: {
-        type: String,
-        required: true
-    },
+    rfid: String,
 
-    section: {
-        type: String,
-        required: true
-    },
+    grade: String,
 
-    rfid: {
-        type: String,
-        required: true
-    },
+    section: String,
 
-    status: {
-        type: String,
-        default: "Present"
-    },
+    status: String,
 
-    date: {
-        type: String,
-        required: true
-    },
+    date: String,
 
-    time: {
-        type: String,
-        required: true
-    }
+    time: String
 
 }, {
 
@@ -48,7 +27,4 @@ const AttendanceSchema = new mongoose.Schema({
 
 });
 
-module.exports = mongoose.model(
-    "Attendance",
-    AttendanceSchema
-);
+module.exports = mongoose.model("Attendance", attendanceSchema);

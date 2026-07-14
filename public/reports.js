@@ -2,6 +2,7 @@
 // SMARTATTEND REPORTS SYSTEM
 // reports.js
 // ===========================
+fetch("http://localhost:3000/api/reports")
 
 let students =
 JSON.parse(localStorage.getItem("students")) || [];

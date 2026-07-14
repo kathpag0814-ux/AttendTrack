@@ -1,293 +1,210 @@
 // ===============================
-// SMARTATTEND RFID SYSTEM
-// script.js
+// ATTENDTRACK RFID SYSTEM
+// script.js (PART 1)
 // ===============================
 
 const API_URL = "http://localhost:3000";
 
-// Load dashboard statistics
+let students = [];
+
+// ===============================
+// DASHBOARD
+// ===============================
+
 async function loadDashboard() {
 
     try {
 
-        const response = await fetch(
-            `${API_URL}/dashboard`
-        );
-
+        const response = await fetch(`${API_URL}/dashboard`);
         const data = await response.json();
 
-        // Statistics
-        document.getElementById("totalStudents").textContent =
-            data.totalStudents || 0;
+        if (document.getElementById("totalStudents"))
+            document.getElementById("totalStudents").textContent = data.totalStudents;
 
-        document.getElementById("presentToday").textContent =
-            data.presentToday || 0;
+        if (document.getElementById("presentToday"))
+            document.getElementById("presentToday").textContent = data.presentToday;
 
-        document.getElementById("lateToday").textContent =
-            data.lateToday || 0;
+        if (document.getElementById("lateToday"))
+            document.getElementById("lateToday").textContent = data.lateToday;
 
-        document.getElementById("absentToday").textContent =
-            data.absentToday || 0;
+        if (document.getElementById("absentToday"))
+            document.getElementById("absentToday").textContent = data.absentToday;
 
-        // Attendance Rate Circle
-        document.getElementById("attendanceRate").innerHTML = `
-            ${data.attendanceRate || 0}%
-            <span>Attendance Rate</span>
-        `;
+        if (document.getElementById("attendanceRate")) {
 
-    } catch (error) {
+            document.getElementById("attendanceRate").innerHTML = `
+                ${data.attendanceRate}%
+                <span>Attendance Rate</span>
+            `;
 
-        console.error(
-            "Dashboard Error:",
-            error
-        );
+        }
+
+    } catch (err) {
+
+        console.error("Dashboard Error:", err);
 
     }
 
 }
 
-// RFID Scan Function
-async function scan() {
+// ===============================
+// RFID SCAN
+// ===============================
 
-    try {
+async function scanRFID() {
 
-        const rfid = prompt(
-            "Scan RFID Card UID:"
-        );
+    let rfid = "";
+
+    // Read from textbox if available
+    const input = document.getElementById("rfidCode");
+
+    if (input && input.value.trim() !== "") {
+
+        rfid = input.value.trim();
+
+    } else {
+
+        // Manual input if no RFID was scanned
+        rfid = prompt("Enter RFID Number:");
 
         if (!rfid) return;
 
-        document.querySelector(".ready").textContent =
-            "Scanning RFID Card...";
-
-        const response = await fetch(
-            `${API_URL}/scan`,
-            {
-                method: "POST",
-                headers: {
-                    "Content-Type":
-                    "application/json"
-                },
-                body: JSON.stringify({
-                    rfid
-                })
-            }
-        );
-
-        const data =
-            await response.json();
-
-        if (data.success) {
-
-            document.querySelector(".ready")
-                .innerHTML =
-                "✓ Attendance Recorded";
-
-            document.querySelector(
-                ".scanner p:last-child b"
-            ).innerHTML =
-                `${data.student.name} (${data.student.section})`;
-
-            addRecentScan(
-                data.student.name,
-                data.student.section,
-                data.status || "PRESENT"
-            );
-
-            loadDashboard();
-
-        } else {
-
-            document.querySelector(".ready")
-                .innerHTML =
-                "RFID Not Registered";
-
-            alert(
-                "RFID card not found."
-            );
-
-        }
-
-    } catch (error) {
-
-        console.error(
-            "Scan Error:",
-            error
-        );
-
     }
 
-}
+    try {
 
-// Add New Attendance Row
-function addRecentScan(
-    studentName,
-    section,
-    status
-) {
+        const response = await fetch(`${API_URL}/api/scan`, {
 
-    const table =
-        document.querySelector("table");
+            method: "POST",
 
-    const row =
-        document.createElement("tr");
+            headers: {
+                "Content-Type": "application/json"
+            },
 
-    const now =
-        new Date();
+            body: JSON.stringify({
+                rfid
+            })
 
-    const time =
-        now.toLocaleTimeString(
-            [],
-            {
-                hour: "2-digit",
-                minute: "2-digit"
-            }
-        );
+        });
 
-    const statusClass =
-        status === "LATE"
-        ? "late"
-        : "present";
+        const data = await response.json();
 
-    row.innerHTML = `
-        <td>${studentName}</td>
-        <td>${section}</td>
-        <td>${time}</td>
-        <td class="${statusClass}">
-            ${status}
-        </td>
-    `;
-
-    table.appendChild(row);
-
-}
-
-// Load Dashboard On Start
-window.onload = () => {
-
-  loadDashboard();
-
-  displayStudents();
-
-  const active =
-    localStorage.getItem("activePage");
-
-  if(active){
-
-    document
-      .querySelectorAll(".nav")
-      .forEach(a => {
-
-        if(a.dataset.page === active){
-
-          a.classList.add("active");
-
+       if (data.success) {
+            alert("Attendance Recorded!");
+        } else {
+            alert(data.message);
         }
 
-      });
-
-  }
-
-  setInterval(loadDashboard,3000);
-
-};
-
-
-
+    } catch (err) {
+        console.error(err);
+    }
+}
 // ===============================
-// STUDENT DATABASE
+// GRADE & SECTION
 // ===============================
-
-let students =
-JSON.parse(localStorage.getItem("students")) || [];
 
 const sections = {
-    "Grade 7": ["Rizal", "Bonifacio", "Mabini"],
-    "Grade 8": ["Einstein", "Newton", "Darwin"],
-    "Grade 9": ["Mercury", "Venus", "Earth"],
-    "Grade 10": ["Hope", "Faith", "Charity"],
-    "Grade 11": ["STEM 1", "STEM 2", "ABM 1", "HUMSS 1"],
-    "Grade 12": ["STEM A", "STEM B", "ABM A", "HUMSS A"]
-};
 
-// ===============================
-// LOAD SECTIONS
-// ===============================
+    "Grade 7": ["Rizal","Bonifacio","Mabini"],
+    "Grade 8": ["Einstein","Newton","Darwin"],
+    "Grade 9": ["Mercury","Venus","Earth"],
+    "Grade 10": ["Hope","Faith","Charity"],
+    "Grade 11": ["STEM 1","STEM 2","ABM 1","HUMSS 1"],
+    "Grade 12": ["STEM A","STEM B","ABM A","HUMSS A"]
+
+};
 
 function loadSections() {
 
-    alert("Function is working!");
-
     const grade = document.getElementById("grade").value;
+
     const section = document.getElementById("section");
 
-    const sections = {
-        "Grade 7": ["Rizal", "Bonifacio", "Mabini"],
-        "Grade 8": ["Einstein", "Newton", "Darwin"],
-        "Grade 9": ["Mercury", "Venus", "Earth"],
-        "Grade 10": ["Hope", "Faith", "Charity"],
-        "Grade 11": ["STEM 1", "STEM 2", "ABM 1", "HUMSS 1"],
-        "Grade 12": ["STEM A", "STEM B", "ABM A", "HUMSS A"]
-    };
-
-    section.innerHTML = '<option>Select Section</option>';
+    section.innerHTML = `<option value="">Select Section</option>`;
 
     if (sections[grade]) {
-        sections[grade].forEach(item => {
-            section.innerHTML += `<option>${item}</option>`;
+
+        sections[grade].forEach(sec => {
+
+            section.innerHTML += `
+                <option value="${sec}">
+                    ${sec}
+                </option>
+            `;
+
         });
+
     }
+
 }
 
-// ===============================
-// ADD STUDENT
-// ===============================
+// ================================
+// Load Students from MongoDB
+// ================================
 
-function addStudent() {
+async function loadStudents() {
+
+    try {
+
+        const response = await fetch(`${API_URL}/api/students`);
+
+        students = await response.json();
+
+        displayStudents();
+
+    } catch (err) {
+
+        console.error("Load Students Error:", err);
+
+    }
+
+}
+
+// ================================
+// Add Student
+// ================================
+
+async function addStudent() {
 
     const student = {
 
-        name:
-        document.getElementById("name").value,
+        studentId: document.getElementById("studentId").value,
 
-        rfid:
-        document.getElementById("rfid").value,
+        name: document.getElementById("name").value,
 
-        grade:
-        document.getElementById("grade").value,
+        rfid: document.getElementById("rfid").value,
 
-        section:
-        document.getElementById("section").value,
+        grade: document.getElementById("grade").value,
 
-        status:
-        "Active"
+        section: document.getElementById("section").value
 
     };
 
-    if (
-        student.name === "" ||
-        student.rfid === "" ||
-        student.grade === "" ||
-        student.section === ""
-    ) {
+    try {
 
-        alert("Please complete all information");
-        return;
+        const response = await fetch(`${API_URL}/api/students`, {
+
+            method: "POST",
+
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify(student)
+
+        });
+
+        const data = await response.json();
+
+        alert(data.message);
+
+        loadStudents();
+
+    } catch (err) {
+
+        console.error("Add Student Error:", err);
 
     }
-
-    students.push(student);
-
-    localStorage.setItem(
-        "students",
-        JSON.stringify(students)
-    );
-
-    displayStudents();
-
-    clearForm();
-
-    alert("Student Added Successfully");
 
 }
 
@@ -295,34 +212,32 @@ function addStudent() {
 // DISPLAY STUDENTS
 // ===============================
 
-function displayStudents() {
+function displayStudents(){
 
-    const table =
-        document.getElementById("studentTable");
+    const table=document.getElementById("studentTable");
 
-    if (!table) return;
+    table.innerHTML="";
 
-    table.innerHTML = "";
+    students.forEach(student=>{
 
-    students.forEach((student, index) => {
+        table.innerHTML+=`
 
-        table.innerHTML += `
-            <tr>
-                <td>${student.name}</td>
+        <tr>
+
+            <td>${student.studentId}</td>
+
+            <td>${student.name}</td>
+
+            <td>${student.rfid}</td>
+
+            <td>${student.grade}</td>
+
+            <td>${student.section}</td>
+
+            <td>${student.status}</td>
+
                 <td>
-                    <span class="rfid-tag">
-                        ${student.rfid}
-                    </span>
-                </td>
-                <td>${student.grade}</td>
-                <td>${student.section}</td>
-                <td>
-                    <span class="present">
-                        ${student.status}
-                    </span>
-                </td>
-                <td>
-                    <button onclick="deleteStudent(${index})">
+                    <button onclick="deleteStudent('${student._id}')">
                         Delete
                     </button>
                 </td>
@@ -331,106 +246,118 @@ function displayStudents() {
 
     });
 
-    updateCards();
-
 }
 
 // ===============================
 // DELETE STUDENT
 // ===============================
 
-function deleteStudent(index) {
+async function deleteStudent(id) {
 
-    students.splice(index, 1);
+    if (!confirm("Delete this student?")) return;
 
-    localStorage.setItem(
-        "students",
-        JSON.stringify(students)
-    );
+    try {
 
-    displayStudents();
+        const response = await fetch(`${API_URL}/api/students/${id}`, {
 
-}
+            method: "DELETE"
 
-// ===============================
-// UPDATE DASHBOARD CARDS
-// ===============================
+        });
 
-function updateCards() {
+        const data = await response.json();
 
-    const totalStudents =
-        document.getElementById("totalStudents");
+        alert(data.message);
 
-    const totalRFID =
-        document.getElementById("totalRFID");
+        loadStudents();
 
-    const activeStudents =
-        document.getElementById("activeStudents");
+        loadDashboard();
 
-    if (totalStudents)
-        totalStudents.textContent =
-            students.length;
+    }
 
-    if (totalRFID)
-        totalRFID.textContent =
-            students.filter(
-                x => x.rfid !== ""
-            ).length;
+    catch (err) {
 
-    if (activeStudents)
-        activeStudents.textContent =
-            students.filter(
-                x => x.status === "Active"
-            ).length;
+        console.error(err);
+
+    }
 
 }
 
 // ===============================
-// CLEAR FORM
+// SEARCH STUDENTS
 // ===============================
 
-function clearForm() {
-
-    document.getElementById("name").value = "";
-    document.getElementById("rfid").value = "";
-    document.getElementById("grade").value = "";
-
-    document.getElementById("section").innerHTML =
-        '<option value="">Select Section</option>';
-
-}
-
-// ===============================
-// SEARCH
-// ===============================
-
-const search =
-document.getElementById("search");
+const search = document.getElementById("search");
 
 if (search) {
 
-    search.addEventListener(
-        "keyup",
-        function () {
+    search.addEventListener("keyup", function () {
 
-            const value =
-                this.value.toLowerCase();
+        const keyword = this.value.toLowerCase();
 
-            document
-                .querySelectorAll("#studentTable tr")
-                .forEach(row => {
+        document.querySelectorAll("#studentTable tr").forEach(row => {
 
-                    row.style.display =
-                        row.innerText
-                            .toLowerCase()
-                            .includes(value)
-                            ? ""
-                            : "none";
+            row.style.display =
+                row.innerText.toLowerCase().includes(keyword)
+                    ? ""
+                    : "none";
 
-                });
+        });
 
-        }
-    );
+    });
 
 }
 
+// ===============================
+// NAVIGATION
+// ===============================
+
+document.querySelectorAll(".nav").forEach(nav => {
+
+    nav.addEventListener("click", function () {
+
+        document.querySelectorAll(".nav").forEach(item => {
+
+            item.classList.remove("active");
+
+        });
+
+        this.classList.add("active");
+
+        localStorage.setItem(
+            "activePage",
+            this.dataset.page
+        );
+
+    });
+
+});
+
+// ===============================
+// INITIALIZE
+// ===============================
+
+window.addEventListener("DOMContentLoaded", () => {
+
+    loadDashboard();
+
+    loadStudents();
+
+    const active = localStorage.getItem("activePage");
+
+    if (active) {
+
+        document.querySelectorAll(".nav").forEach(nav => {
+
+            if (nav.dataset.page === active) {
+
+                nav.classList.add("active");
+
+            }
+
+        });
+
+    }
+
+    setInterval(loadDashboard, 5000);
+
+});

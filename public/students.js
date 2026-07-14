@@ -2,7 +2,7 @@
 // SMARTATTEND STUDENTS PAGE
 // students.js
 // ===============================
-
+fetch("http://localhost:3000/api/students")
 // STUDENT DATABASE
 let students =
 JSON.parse(

@@ -2,7 +2,7 @@
 // NOTIFICATIONS
 // notifications.js
 // ===============================
-
+fetch("http://localhost:3000/api/notifications")
 // Load Data
 let students =
 JSON.parse(localStorage.getItem("students")) || [];

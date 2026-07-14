@@ -1,13 +1,9 @@
-const mongoose = require("mongoose");
+const dns = require("dns");
 
-mongoose.connect(
-  "mongodb+srv://Kath:attendtrack@attendtrack.dt2vekz.mongodb.net/?appName=AttendTrack"
-)
-.then(() => {
-  console.log("✅ Connected!");
-  process.exit(0);
-})
-.catch((err) => {
-  console.error(err);
-  process.exit(1);
+dns.resolveSrv("_mongodb._tcp.attendtrack.dt2vekz.mongodb.net", (err, addresses) => {
+  if (err) {
+    console.error(err);
+  } else {
+    console.log(addresses);
+  }
 });

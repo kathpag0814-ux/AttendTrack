@@ -2,7 +2,7 @@
 // SmartAttend AI Analytics
 // aianalytics.js
 // ====================================
-
+fetch("http://localhost:3000/api/aianalytics")
 // Load students
 let students = JSON.parse(localStorage.getItem("students")) || [];
 

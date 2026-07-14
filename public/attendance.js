@@ -2,7 +2,7 @@
 // SMARTATTEND ATTENDANCE SYSTEM
 // attendance.js
 // ===============================
-
+fetch("http://localhost:3000/api/attendance")
 // SAMPLE STUDENT DATABASE
 let students = [
     {

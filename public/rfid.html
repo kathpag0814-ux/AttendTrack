@@ -124,9 +124,14 @@ System Logs
 
       <p>Scan RFID tag below:</p>
 
-      <input placeholder="RFID Code">
+      <input
+    type="text"
+    id="rfidCode"
+    placeholder="Scan RFID Card">
 
-      <button>Register RFID</button>
+      <button onclick="scanRFID()">
+    Register RFID
+</button>
 
     </div>
 
@@ -135,13 +140,15 @@ System Logs
 
       <h2>Last Scan</h2>
 
-      <p>Juan Dela Cruz - 001 (07:41 AM)</p>
+      <p id="lastScan">
+    No scan yet
+</p>
 
     </div>
 
   </main>
 
 </div>
-
+<script src="script.js"></script>
 </body>
 </html>

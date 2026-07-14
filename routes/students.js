@@ -3,17 +3,16 @@ const router = express.Router();
 
 const Student = require("../models/students");
 
-// ===========================
+
+// ================================
 // GET ALL STUDENTS
-// ===========================
+// ================================
 
 router.get("/", async (req, res) => {
 
     try {
 
-        const students = await Student.find().sort({
-            name: 1
-        });
+        const students = await Student.find().sort({ _id: -1 });
 
         res.json(students);
 
@@ -27,15 +26,28 @@ router.get("/", async (req, res) => {
 
 });
 
-// ===========================
+
+// ================================
 // ADD STUDENT
-// ===========================
+// ================================
 
 router.post("/", async (req, res) => {
 
     try {
 
-        const student = new Student(req.body);
+        const student = new Student({
+
+            name: req.body.name,
+
+            rfid: req.body.rfid,
+
+            grade: req.body.grade,
+
+            section: req.body.section,
+
+            status: "Active"
+
+        });
 
         await student.save();
 
@@ -43,13 +55,13 @@ router.post("/", async (req, res) => {
 
             success: true,
 
+            message: "Student Added Successfully",
+
             student
 
         });
 
-    }
-
-    catch (err) {
+    } catch (err) {
 
         res.status(500).json({
 
@@ -63,66 +75,30 @@ router.post("/", async (req, res) => {
 
 });
 
-// ===========================
-// UPDATE STUDENT
-// ===========================
 
-router.put("/:id", async (req, res) => {
-
-    try {
-
-        const student =
-        await Student.findByIdAndUpdate(
-
-            req.params.id,
-
-            req.body,
-
-            { new: true }
-
-        );
-
-        res.json(student);
-
-    }
-
-    catch (err) {
-
-        res.status(500).json({
-
-            message: err.message
-
-        });
-
-    }
-
-});
-
-// ===========================
+// ================================
 // DELETE STUDENT
-// ===========================
+// ================================
 
 router.delete("/:id", async (req, res) => {
 
     try {
 
-        await Student.findByIdAndDelete(
-
-            req.params.id
-
-        );
+        await Student.findByIdAndDelete(req.params.id);
 
         res.json({
 
-            success: true
+            success: true,
+
+            message: "Student Deleted"
 
         });
 
-    }
-
-    catch (err) {
+    } catch (err) {
 
         res.status(500).json({
+
+            success: false,
 
             message: err.message
 

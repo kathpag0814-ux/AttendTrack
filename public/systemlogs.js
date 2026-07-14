@@ -2,7 +2,7 @@
 // SYSTEM LOGS
 // systemlogs.js
 // ===============================
-
+fetch("http://localhost:3000/api/systemlogs")
 // Load Logs
 let logs =
 JSON.parse(localStorage.getItem("systemLogs")) || [];

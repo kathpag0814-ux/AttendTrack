@@ -1,16 +1,21 @@
 const mongoose = require("mongoose");
 
-const StudentSchema = new mongoose.Schema({
-
+const studentSchema = new mongoose.Schema({
+    
     studentId: {
         type: String,
-        required: true,
         unique: true
     },
 
     name: {
         type: String,
         required: true
+    },
+
+    rfid: {
+        type: String,
+        required: true,
+        unique: true
     },
 
     grade: {
@@ -23,10 +28,9 @@ const StudentSchema = new mongoose.Schema({
         required: true
     },
 
-    rfid: {
+    status: {
         type: String,
-        required: true,
-        unique: true
+        default: "Active"
     }
 
 }, {
@@ -35,7 +39,4 @@ const StudentSchema = new mongoose.Schema({
 
 });
 
-module.exports = mongoose.model(
-    "Student",
-    StudentSchema
-);
+module.exports = mongoose.model("Student", studentSchema);
